@@ -14,7 +14,7 @@ const ManageQuizzesPage = () => {
   const [isEditDialogOpen, setIsEditDialogOpen] = useState(false);
   const [quizDetails, setQuizDetails] = useState({
     question: '',
-    response: '',
+    response: false,
     category: '',
   });
 
@@ -64,9 +64,10 @@ const ManageQuizzesPage = () => {
       // Refresh quizzes after adding
       fetchQuizzes();
       setIsAddDialogOpen(false);
-      setQuizDetails({ question: '', response: '', category: '' });
+      setQuizDetails({ question: '', response: false, category: '' });
     } catch (error) {
       console.error('Error adding quiz:', error);
+
     }
   };
 
@@ -171,8 +172,8 @@ const ManageQuizzesPage = () => {
                 value={quizDetails.response}
                 onChange={handleQuizDetailsChange}
               >
-                <MenuItem value="true">Vrai</MenuItem>
-                <MenuItem value="false">Faux</MenuItem>
+                <MenuItem value={"true"}>Vrai</MenuItem>
+                <MenuItem value={"false"}>Faux</MenuItem>
               </Select>
             </FormControl>
             <TextField
